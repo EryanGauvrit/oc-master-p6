@@ -36,12 +36,12 @@ public class TopicController {
         return response;
     }
 
-    @DeleteMapping("/subscription")
-    public Map<String, String> unsubscribeTopic(@RequestHeader("Authorization") String token, @RequestBody Map<String, String> body) {
+    @DeleteMapping("/subscription/{topicId}")
+    public Map<String, String> unsubscribeTopic(@RequestHeader("Authorization") String token, @PathVariable String topicId) {
         // remove Bearer
         token = token.substring(7);
         String userEmail = springSecurityConfig.jwtDecoder().decode(token).getSubject();
-        String message = topicService.unsubscribeTopic(userEmail, body.get("topicId"));
+        String message = topicService.unsubscribeTopic(userEmail, topicId);
         Map<String, String> response = new HashMap<>();
         response.put("message", message);
         return response;
