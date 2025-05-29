@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<main *ngIf="$isLogged() | async; else notLogged">
+    <nav>
+        <img src="/assets/logo_p6.png" alt="logo" />
+        <div>
+            <a routerLink="" class="link">Articles</a>
+            <a routerLink="/topics" class="link">Thèmes</a>
+            <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
+        </div>
+    </nav>
+</main>
+<ng-template #notLogged>
+    <router-outlet></router-outlet>
+</ng-template>
+

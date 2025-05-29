@@ -1,0 +1,28 @@
+<div class="login">
+    <div class="navbar">
+        <img src="/assets/logo_p6.png" alt="logo" />
+    </div>
+    <a class="back-link" mat-button routerLink="/auth">
+        <mat-icon>arrow_back</mat-icon>
+    </a>
+    <div class="form-header">
+        <img src="/assets/logo_p6.png" alt="logo" />
+        <h1>Se connecter</h1>
+    </div>
+    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+            <label for="identifier">
+                Email ou nom d'utilisateur
+            </label>
+            <input id="identifier" placeholder="Email ou nom d'utilisateur" formControlName="identifier">
+        </div>
+        <div>
+            <label for="password">
+                Mot de passe
+            </label>
+            <input [type]="hide ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password" id="password">
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se connecter</button>
+        <p *ngIf="onError" class="error">An error occurred</p>
+    </form>
+</div>

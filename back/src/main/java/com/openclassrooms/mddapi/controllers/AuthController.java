@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import com.openclassrooms.mddapi.configuration.SpringSecurityConfig;
 import com.openclassrooms.mddapi.dto.UserAuthenticationDto;
+import com.openclassrooms.mddapi.dto.UserAuthenticationResponseDto;
+import com.openclassrooms.mddapi.dto.UserRegisterDto;
 import com.openclassrooms.mddapi.models.User;
 import com.openclassrooms.mddapi.services.JWTService;
 import com.openclassrooms.mddapi.services.UserService;
@@ -25,7 +27,7 @@ public class AuthController {
 
     @Operation(summary = "User login")
     @PostMapping("/login")
-    public Map<String, String> getToken(@RequestBody UserAuthenticationDto user) {
+    public UserAuthenticationResponseDto getToken(@RequestBody UserAuthenticationDto user) {
         Optional<String> email = user.getEmail();
         Optional<String> username = user.getUsername();
         User userFound;
@@ -45,21 +47,17 @@ public class AuthController {
             throw new BadCredentialsException("Password not match");
         }
         String token = jwtService.generateToken(userFound.getEmail());
-        Map<String, String> response = new HashMap<>();
-        response.put("token", token);
-        return response;
+        return new UserAuthenticationResponseDto(token, userFound);
     }
 
     @PostMapping("/register")
-    public Map<String, String> register(@RequestBody User user) {
+    public UserAuthenticationResponseDto register(@RequestBody UserRegisterDto user) {
         User userCreated = userService.create(user);
         if (userCreated == null) {
             throw new RuntimeException("User not created");
         }
         String token = jwtService.generateToken(userCreated.getEmail());
-        Map<String, String> response = new HashMap<>();
-        response.put("token", token);
-        return response;
+        return new UserAuthenticationResponseDto(token, userCreated);
     }
 
     @GetMapping("/me")

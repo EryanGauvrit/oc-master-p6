@@ -4,6 +4,7 @@ package com.openclassrooms.mddapi.services;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+import com.openclassrooms.mddapi.dto.UserRegisterDto;
 import org.springframework.stereotype.Service;
 
 import com.openclassrooms.mddapi.configuration.SpringSecurityConfig;
@@ -18,13 +19,16 @@ public class UserService {
     private final UserRepository userRepository;
     private  final SpringSecurityConfig springSecurityConfig;
 
-    public User create(User user) {
-        if(user.getUsername() == null || user.getPassword() == null || user.getEmail() == null) {
+    public User create(UserRegisterDto body) {
+        if(body.getUsername() == null || body.getPassword() == null || body.getEmail() == null) {
             throw new IllegalArgumentException("Username, password and email are required");
         }
         Instant now = Instant.now();
         Timestamp timestamp = Timestamp.from(now);
-        String hashedPassword = springSecurityConfig.passwordEncoder().encode(user.getPassword());
+        String hashedPassword = springSecurityConfig.passwordEncoder().encode(body.getPassword());
+        User user = new User();
+        user.setUsername(body.getUsername());
+        user.setEmail(body.getEmail());
         user.setCreatedAt(timestamp);
         user.setUpdatedAt(timestamp);
         user.setPassword(hashedPassword);
