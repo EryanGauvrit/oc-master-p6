@@ -1,0 +1,16 @@
+<a [routerLink]="['/posts', post.id]" class="post-link">
+    <mat-card class="post-card">
+        <mat-card-header class="post-content">
+            <mat-card-title>
+                <h2 class="post-title">{{ post.title }}</h2>
+            </mat-card-title>
+            <mat-card-subtitle>
+                <span>{{ post.createdAt| date: 'shortDate' }}</span>
+                <span>{{ post.author.username}} </span>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{ post.content | slice: 0: 200 }}...            
+        </mat-card-content>
+    </mat-card>
+</a>

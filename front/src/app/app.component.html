@@ -1,4 +1,5 @@
 <main *ngIf="$isLogged() | async; else notLogged" [class.main-is-mobile]="mobileQuery.matches">
+    
     <header>
         <img src="/assets/logo_p6.png" alt="logo" />
         <button type="button" mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
@@ -15,7 +16,6 @@
             </div>
         </nav>
     </header>
-        
     <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #snav class="sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" position="end">
     

@@ -53,11 +53,8 @@ main {
 }
 
 .sidenav-container {
-    flex: 1;
-}
-
-.sidenav-container, .main-is-mobile {
-    flex: 1 0 auto;
+    position: unset;
+    z-index: 1;
 }
 
 @media (min-width: 650px) {

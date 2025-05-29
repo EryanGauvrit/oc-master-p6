@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="post-list-actions">
+        <a mat-flat-button color="primary" [routerLink]="['/posts', 'create']">
+            Créer un article
+        </a>
+        <button mat-button (click)="toggleOrder()">
+            Trier par 
+            <mat-icon *ngIf="order === 'desc'" >arrow_downward</mat-icon>
+            <mat-icon *ngIf="order === 'asc'" >arrow_upward</mat-icon>            
+        </button>
+    </div>
+    <div class="post-list">
+        <app-post-card *ngFor="let post of posts;" [post]="post"></app-post-card>
+    </div>
+</div>

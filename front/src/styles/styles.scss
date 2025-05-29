@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; overflow-x: hidden; }
+html, body { height: 100%; overflow: auto; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 input{
@@ -12,4 +12,27 @@ input{
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.mat-card {
+    box-shadow: none!important;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    .mat-card-header {
+        display: block;
+    }
+    .mat-card-subtitle {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+    }
+    .mat-card-header-text {
+        margin: 0;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }

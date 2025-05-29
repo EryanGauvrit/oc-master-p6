@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    component: HomeComponent
+    loadChildren: () => import('./features/post/post.module').then(m => m.PostModule)
   },
   {
     path: 'auth',
@@ -20,7 +20,6 @@ const routes: Routes = [
   //   canActivate: [AuthGuard],
   //   component: MeComponent
   // },
-  // { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404' }
 ];
 
