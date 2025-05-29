@@ -40,7 +40,6 @@ export class PostCreationComponent implements OnInit {
   ngOnInit(): void {
     this.topicService.getTopics().subscribe({
       next: (topics: Topic[]) => {
-        console.log(topics);
         this.topics = topics;
       },
     });

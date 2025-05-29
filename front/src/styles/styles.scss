@@ -52,17 +52,11 @@ a {
 
 .container-with-button-back {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
 }
 
 .align-self-start {
     align-self: start;
-}
-
-@media (min-width: 650px) {
-    .container-with-button-back {
-        flex-direction: row;
-    }
 }

@@ -1,0 +1,35 @@
+<div class="container container-with-button-back">
+    <app-button-back class="align-self-start"></app-button-back>
+    <div class="post-detail">
+        <section>
+            <h1>{{ post.title }}</h1>
+            <h2>
+                <span>{{ post.createdAt | date: 'shortDate' }}</span>
+                <span>{{ post.author.username }}</span>
+                <span>{{ post.topic.title }}</span>
+            </h2>
+            <div class="post-content">
+                <p>{{ post.content }}</p>
+            </div>  
+        </section>
+        <mat-divider></mat-divider>
+        <section>
+            <h3>Commentaires</h3>
+            <div class="comments-container" *ngIf="post.comments.length > 0">
+                <div *ngFor="let comment of post.comments" class="comment">
+                    <div>
+                        <span>{{ comment.user.username }}</span>
+                    </div>
+                    <p>{{ comment.content }}</p>
+                </div>
+            </div>
+            <p *ngIf="post.comments.length === 0">Aucun commentaire pour cet article</p>
+            <form [formGroup]="form" (ngSubmit)="submitComment()" class="comment-form">
+                <textarea matInput placeholder="Écrivez ici votre commentaire" formControlName="content" rows="3"></textarea>
+                <button mat-button color="primary" type="submit" [disabled]="form.invalid">
+                    <mat-icon class="send-icon">send</mat-icon>
+                </button>
+            </form>
+        </section>
+    </div>
+</div>
