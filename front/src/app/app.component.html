@@ -1,12 +1,39 @@
-<main *ngIf="$isLogged() | async; else notLogged">
-    <nav>
+<main *ngIf="$isLogged() | async; else notLogged" [class.main-is-mobile]="mobileQuery.matches">
+    <header>
         <img src="/assets/logo_p6.png" alt="logo" />
-        <div>
-            <a routerLink="" class="link">Articles</a>
-            <a routerLink="/topics" class="link">Thèmes</a>
+        <button type="button" mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <nav *ngIf="!mobileQuery.matches">
             <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
-        </div>
-    </nav>
+            <a routerLink="">Articles</a>
+            <a routerLink="/topics">Thèmes</a>
+            <div class="account-link">
+                <a mat-fab routerLink="/me">
+                    <mat-icon>account_circle</mat-icon>
+                </a>
+            </div>
+        </nav>
+    </header>
+        
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #snav class="sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" position="end">
+    
+            <nav>
+                <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
+                <a routerLink="">Articles</a>
+                <a routerLink="/topics">Thèmes</a>
+                <div class="account-link">
+                    <a mat-fab routerLink="/me">
+                        <mat-icon>account_circle</mat-icon>
+                    </a>
+                </div>
+            </nav>
+        </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    </mat-sidenav-container>
 </main>
 <ng-template #notLogged>
     <router-outlet></router-outlet>
