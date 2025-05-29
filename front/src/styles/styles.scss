@@ -3,10 +3,12 @@
 html, body { height: 100%; overflow: auto; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-input{
+input, textarea, select, option {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     border: 1px solid black;
     border-radius: 8px;
     padding: 1rem 2rem;
+    box-sizing: border-box;
 }
 
 a {
@@ -35,4 +37,21 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
+}
+
+.container-with-button-back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.align-self-start {
+    align-self: start;
+}
+
+@media (min-width: 650px) {
+    .container-with-button-back {
+        flex-direction: row;
+    }
 }

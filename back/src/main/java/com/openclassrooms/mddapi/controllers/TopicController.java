@@ -18,13 +18,11 @@ public class TopicController {
     private final SpringSecurityConfig springSecurityConfig;
 
     @GetMapping
-    public Map<String, List<GetTopicsResponse>> getAllTopics(@RequestHeader("Authorization") String token) {
+    public List<GetTopicsResponse> getAllTopics(@RequestHeader("Authorization") String token) {
         // remove Bearer
         token = token.substring(7);
         String userEmail = springSecurityConfig.jwtDecoder().decode(token).getSubject();
-        Map<String, List<GetTopicsResponse>> response = new HashMap<>();
-        response.put("topics", topicService.getTopics(userEmail));
-        return response;
+        return topicService.getTopics(userEmail);
     }
 
     @PostMapping("/subscription")

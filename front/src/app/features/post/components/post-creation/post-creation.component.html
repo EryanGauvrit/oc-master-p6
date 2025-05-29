@@ -1,1 +1,14 @@
-<p>post-creation works!</p>
+<div class="container container-with-button-back">
+    <app-button-back class="align-self-start"></app-button-back>
+    <form class="post-form" [formGroup]="form" (ngSubmit)="submit()">
+        <h1>Créer un nouvel article</h1>
+        <select formControlName="topicId" >
+            <option value="" disabled selected>Sélectionner un thème</option>
+            <option *ngFor="let topic of topics" [value]="topic.id">{{ topic.title }}</option>
+        </select>
+        <input placeholder="Titre de l'article" formControlName="title">
+        <textarea placeholder="Contenu de l'article" formControlName="content" rows="10"></textarea>
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Créer</button>
+        <p *ngIf="onError" class="error">Une erreur est survenue</p>
+    </form>
+</div>

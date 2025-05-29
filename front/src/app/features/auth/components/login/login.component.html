@@ -23,6 +23,6 @@
             <input [type]="hide ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password" id="password">
         </div>
         <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se connecter</button>
-        <p *ngIf="onError" class="error">An error occurred</p>
+        <p *ngIf="onError" class="error">Une erreur est survenue</p>
     </form>
 </div>

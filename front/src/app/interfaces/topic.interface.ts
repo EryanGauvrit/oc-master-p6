@@ -4,4 +4,5 @@ export interface Topic {
     content: string;
     createdAt: Date;
     updatedAt: Date;
+    subscribed: boolean;
 }

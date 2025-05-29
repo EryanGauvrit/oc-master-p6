@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { HomeComponent } from './pages/home/home.component';
-import { ButtonBackComponent } from './components/button-back/button-back.component';
 
 const materialModule = [
   MatButtonModule,
@@ -26,7 +25,7 @@ const materialModule = [
 ]
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ButtonBackComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
