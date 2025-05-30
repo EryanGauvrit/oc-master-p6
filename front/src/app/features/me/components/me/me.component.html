@@ -1,8 +1,8 @@
 <div class="container me-container">
     <form class="me-form" [formGroup]="form" (ngSubmit)="submit()">
         <h1>Profil utilisateur</h1>
-        <input placeholder="Nom d'utilisateur" formControlName="username">
-        <input placeholder="Email" formControlName="email">
+        <input placeholder="Nom d'utilisateur" formControlName="username" type="text">
+        <input placeholder="Email" formControlName="email" type="email">
         <input placeholder="Mot de passe" type="password" formControlName="password">
         <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Sauvegarder</button>
         <p *ngIf="onError" class="error">Une erreur est survenue</p>

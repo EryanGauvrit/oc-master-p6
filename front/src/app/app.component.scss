@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use 'src/styles/theme' as theme;
+
 main {
     display: flex;
     flex-direction: column;
@@ -21,10 +24,7 @@ main {
         align-items: flex-end;
         gap: 1rem;
         min-width: 200px;
-        height: 100%;
-        & a {
-            padding-inline: 1rem;
-        }
+        height: 100%;        
         & button {
             margin-top: 5rem;
         }
@@ -33,11 +33,18 @@ main {
             flex-grow: 1;
             display: flex;
             align-items: flex-end;
-
-            & .mat-fab {
+            
+            .account-icon {
+                height: 40px;
+                width: 40px;
                 margin-bottom: 1rem;
                 background-color: #D9D9D9;
                 box-shadow: none;
+                padding: 0.2rem;
+                border-radius: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 & .mat-icon {
                     scale: 1.5;
                 }
@@ -69,9 +76,13 @@ main {
             & .account-link {
                 flex-grow: 0;
 
-                & .mat-fab {
+                & .account-icon {
+                    height: 30px;
+                    width: 30px;
                     margin-bottom: 0;
-                    background-color: transparent;
+                    & .mat-icon {
+                        scale: 1.2;
+                    }
                 }
             }
         }

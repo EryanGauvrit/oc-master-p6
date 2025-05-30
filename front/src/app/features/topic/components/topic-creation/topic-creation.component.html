@@ -1,0 +1,10 @@
+<div class="container container-with-button-back">
+    <app-button-back class="align-self-start"></app-button-back>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <h1>Créer un nouveau thème</h1>
+        <input placeholder="Titre du thème" formControlName="title">
+        <textarea placeholder="Description du thème" formControlName="content" rows="10"></textarea>
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Créer</button>
+        <p *ngIf="onError" class="error">Une erreur est survenue</p>
+    </form>
+</div>

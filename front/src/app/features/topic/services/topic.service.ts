@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Topic } from "src/app/interfaces/topic.interface";
+import { CreateTopic } from "../interfaces/createTopic.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +13,13 @@ export class TopicService {
     
     getTopics(): Observable<Topic[]> {
         return this.httpClient.get<Topic[]>('/topics');
+    }
+
+    createTopic({content, title }: CreateTopic): Observable<Topic> {
+        return this.httpClient.post<Topic>('/topics', {
+            title,
+            content
+        });
     }
 
     getUserSubscribedTopics(): Observable<Topic[]> {

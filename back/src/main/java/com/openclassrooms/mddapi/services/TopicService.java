@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -40,6 +42,14 @@ public class TopicService {
     public Topic getTopicById(Long id) {
         return topicRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Topic not found with id: " + id));
+    }
+
+    public Topic createTopic(Topic topic) {
+        Instant now = Instant.now();
+        Timestamp timestamp = Timestamp.from(now);
+        topic.setCreatedAt(timestamp);
+        topic.setUpdatedAt(timestamp);
+        return topicRepository.save(topic);
     }
 
     public String subscribeTopic(String email, String topicId) {

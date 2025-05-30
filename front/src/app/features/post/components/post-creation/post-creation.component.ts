@@ -33,7 +33,7 @@ export class PostCreationComponent implements OnInit {
           Validators.required,
         ]
       ]
-    });
+  });
 
   constructor(private postService: PostService, private fb: FormBuilder, private router: Router, private topicService: TopicService) { }
 

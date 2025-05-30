@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/commons/shared.module';
+import { TopicCreationComponent } from './components/topic-creation/topic-creation.component';
 import { TopicPageComponent } from './components/topic-page/topic-page.component';
 
 const materialModules = [
@@ -22,11 +23,12 @@ const materialModules = [
 
 const routes: Routes = [
   { path: '', component:  TopicPageComponent },
+  { path: 'create', component:  TopicCreationComponent },
 ];
 
 @NgModule({
   declarations: [  
-    TopicPageComponent
+    TopicPageComponent, TopicCreationComponent
   ],
   imports: [
     RouterModule.forChild(routes),

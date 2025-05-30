@@ -7,13 +7,13 @@
         </button>
         <nav *ngIf="!mobileQuery.matches">
             <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
-            <a routerLink="">Articles</a>
-            <a routerLink="/topics">Thèmes</a>
-            <div class="account-link">
-                <a mat-fab routerLink="/me">
-                    <mat-icon>account_circle</mat-icon>
-                </a>
-            </div>
+            <app-nav-link link="">Articles</app-nav-link>
+            <app-nav-link link="/topics">Thèmes</app-nav-link>
+            <app-nav-link link="/me" class="account-link">
+                <div class="account-icon">
+                    <mat-icon>person</mat-icon>
+                </div>
+            </app-nav-link>
         </nav>
     </header>
     <mat-sidenav-container class="sidenav-container">
@@ -21,13 +21,13 @@
     
             <nav>
                 <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
-                <a routerLink="">Articles</a>
-                <a routerLink="/topics">Thèmes</a>
-                <div class="account-link">
-                    <a mat-fab routerLink="/me">
-                        <mat-icon>account_circle</mat-icon>
-                    </a>
-                </div>
+                <app-nav-link link="">Articles</app-nav-link>
+                <app-nav-link link="/topics">Thèmes</app-nav-link>
+                <app-nav-link link="/me" class="account-link">
+                    <div class="account-icon">
+                        <mat-icon>person</mat-icon>
+                    </div>
+                </app-nav-link>
             </nav>
         </mat-sidenav>
     <mat-sidenav-content>

@@ -2,6 +2,8 @@ package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.configuration.SpringSecurityConfig;
 import com.openclassrooms.mddapi.dto.GetTopicsResponse;
+import com.openclassrooms.mddapi.dto.TopicCreationDto;
+import com.openclassrooms.mddapi.models.Topic;
 import com.openclassrooms.mddapi.services.TopicService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,14 @@ public class TopicController {
         token = token.substring(7);
         String userEmail = springSecurityConfig.jwtDecoder().decode(token).getSubject();
         return topicService.getTopics(userEmail);
+    }
+
+    @PostMapping
+    public Topic createTopic(@RequestBody TopicCreationDto postBody) {
+        Topic topic = new Topic();
+        topic.setTitle(postBody.getTitle());
+        topic.setContent(postBody.getContent());
+        return topicService.createTopic(topic);
     }
 
     @GetMapping("/subscription")

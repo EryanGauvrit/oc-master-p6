@@ -1,6 +1,6 @@
 <div class="container container-with-button-back">
     <app-button-back class="align-self-start"></app-button-back>
-    <form class="post-form" [formGroup]="form" (ngSubmit)="submit()">
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
         <h1>Créer un nouvel article</h1>
         <select formControlName="topicId" >
             <option value="" disabled selected>Sélectionner un thème</option>

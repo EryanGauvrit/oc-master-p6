@@ -1,0 +1,15 @@
+.topic-list-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+@media (min-width: 650px) {
+    .topic-list-actions {
+        flex-direction: row;
+        justify-content: space-between;
+        width: auto;
+    }
+}

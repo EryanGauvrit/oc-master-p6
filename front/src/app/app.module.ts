@@ -11,9 +11,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './commons/shared.module';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { HomeComponent } from './pages/home/home.component';
-import { MeComponent } from './features/me/components/me/me.component';
 
 const materialModule = [
   MatButtonModule,
@@ -28,6 +28,7 @@ const materialModule = [
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

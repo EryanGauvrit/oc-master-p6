@@ -1,4 +1,9 @@
 <div class="container">
+    <div class="topic-list-actions">
+        <a mat-flat-button color="primary" [routerLink]="['/topics', 'create']">
+            Créer un thème
+        </a>
+    </div>
     <div class="topic-list">
         <app-topic-card *ngFor="let topic of topics;" [topic]="topic"></app-topic-card>
     </div>
