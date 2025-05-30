@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from 'src/app/commons/shared.module';
-import { TopicPageComponent } from './components/topic-page/topic-page.component';
+import { MeComponent } from './components/me/me.component';
+import { SharedModule } from "../../commons/shared.module";
 
 const materialModules = [
   MatButtonModule,
@@ -17,24 +17,24 @@ const materialModules = [
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatSelectModule
+  MatDividerModule
 ]
 
 const routes: Routes = [
-  { path: '', component:  TopicPageComponent },
+  { path: '', component:  MeComponent },
 ];
 
 @NgModule({
-  declarations: [  
-    TopicPageComponent
+  declarations: [
+    MeComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
-    ...materialModules
-  ],
+    ...materialModules,
+    SharedModule
+],
 })
-export class TopicModule { }
+export class MeModule { }

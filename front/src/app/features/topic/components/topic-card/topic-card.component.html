@@ -1,13 +1,14 @@
 <mat-card class="topic-card">
     <mat-card-header class="topic-content">
         <mat-card-title>
-            <h2 class="topic-title">{{ topic.title }}</h2>
+            <h3 class="topic-title">{{ topic.title }}</h3>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
         {{ topic.content | slice: 0: 200 }}...            
     </mat-card-content>
     <mat-card-footer>
-        <button mat-flat-button color="primary" (click)="subscribeToTopic()" [disabled]="topic.subscribed">{{topic.subscribed ? 'Déjà abonné': "S'abonner" }}</button>
+        <button *ngIf="!showUnSubscribeButton" mat-flat-button color="primary" (click)="subscribeToTopic()" [disabled]="topic.subscribed">{{topic.subscribed ? 'Déjà abonné': "S'abonner" }}</button>
+        <button *ngIf="showUnSubscribeButton" mat-flat-button color="primary" (click)="unsubscribeFromTopic()" [disabled]="!topic.subscribed">{{topic.subscribed ? 'Se désabonner' : "Désabonné"}}</button>
     </mat-card-footer>
 </mat-card>

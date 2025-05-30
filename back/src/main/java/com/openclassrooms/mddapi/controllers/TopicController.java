@@ -25,6 +25,14 @@ public class TopicController {
         return topicService.getTopics(userEmail);
     }
 
+    @GetMapping("/subscription")
+    public List<GetTopicsResponse> getUserSubscribedTopics(@RequestHeader("Authorization") String token) {
+        // remove Bearer
+        token = token.substring(7);
+        String userEmail = springSecurityConfig.jwtDecoder().decode(token).getSubject();
+        return topicService.getTopicsByUser(userEmail);
+    }
+
     @PostMapping("/subscription")
     public Map<String, String> subscribeTopic(@RequestHeader("Authorization") String token, @RequestBody Map<String, String> body) {
         // remove Bearer

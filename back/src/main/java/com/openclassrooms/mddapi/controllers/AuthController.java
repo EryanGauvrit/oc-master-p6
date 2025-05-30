@@ -68,13 +68,14 @@ public class AuthController {
         return userService.getByEmail(email);
     }
 
-    @PatchMapping("/me")
-    public Map<String, String> updateUser(@RequestHeader("Authorization") String token, @RequestBody User user) {
+    @PutMapping("/me")
+    public UserAuthenticationResponseDto updateUser(@RequestHeader("Authorization") String token, @RequestBody User user) {
         // remove Bearer
         token = token.substring(7);
         String email = springSecurityConfig.jwtDecoder().decode(token).getSubject();
         Long id = userService.getByEmail(email).getId();
         User userUpdated = userService.update(id, user);
-        return Map.of("token", jwtService.generateToken(userUpdated.getEmail()));
+        String newToken = jwtService.generateToken(userUpdated.getEmail());
+        return new UserAuthenticationResponseDto(newToken, userUpdated);
     }
 }

@@ -1,0 +1,21 @@
+<div class="container me-container">
+    <form class="me-form" [formGroup]="form" (ngSubmit)="submit()">
+        <h1>Profil utilisateur</h1>
+        <input placeholder="Nom d'utilisateur" formControlName="username">
+        <input placeholder="Email" formControlName="email">
+        <input placeholder="Mot de passe" type="password" formControlName="password">
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Sauvegarder</button>
+        <p *ngIf="onError" class="error">Une erreur est survenue</p>
+    </form>
+    <mat-divider></mat-divider>
+    <section>
+        <h2>Abonnements</h2>
+        <div *ngIf="subscribedTopics.length > 0" class="topic-list">
+            <app-topic-card *ngFor="let topic of subscribedTopics" [topic]="topic" [showUnSubscribeButton]="true"></app-topic-card>
+        </div>
+        <div *ngIf="subscribedTopics.length === 0" class="no-subscriptions">
+            <p>Vous n'êtes abonné à aucun thème pour le moment.</p>
+            <p>Pour vous abonner à un thème, rendez-vous sur la page <a routerLink="/topics">Thèmes</a>.</p>
+        </div>
+    </section>
+</div>

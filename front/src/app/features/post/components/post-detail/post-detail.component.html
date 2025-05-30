@@ -3,11 +3,11 @@
     <div class="post-detail">
         <section>
             <h1>{{ post.title }}</h1>
-            <h2>
+            <p class="post-meta">
                 <span>{{ post.createdAt | date: 'shortDate' }}</span>
                 <span>{{ post.author.username }}</span>
                 <span>{{ post.topic.title }}</span>
-            </h2>
+            </p>
             <div class="post-content">
                 <p>{{ post.content }}</p>
             </div>  

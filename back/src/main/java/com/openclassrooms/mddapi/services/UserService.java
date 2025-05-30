@@ -55,8 +55,12 @@ public class UserService {
         userToUpdate.setUpdatedAt(timestamp);
         userToUpdate.setUsername(user.getUsername());
         userToUpdate.setEmail(user.getEmail());
-        String hashedPassword = springSecurityConfig.passwordEncoder().encode(user.getPassword());
-        userToUpdate.setPassword(hashedPassword);
+        // If the password is not provided, keep the existing one
+        if (user.getPassword() != null) {
+            String hashedPassword = springSecurityConfig.passwordEncoder().encode(user.getPassword());
+            userToUpdate.setPassword(hashedPassword);
+        }
+
         return userRepository.save(userToUpdate);
     }
 

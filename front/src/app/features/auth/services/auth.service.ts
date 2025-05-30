@@ -28,6 +28,14 @@ export class AuthService {
     );
   }
 
+  public updateUser(updateRequest: RegisterRequest): Observable<SessionInformation> {
+    return this.httpClient.put<SessionInformation>(`/auth/me`, updateRequest).pipe(
+      tap((session: SessionInformation) => {
+        this.putSessionInLocalStorage(session);
+      })
+    );
+  }
+
   private putSessionInLocalStorage(session: SessionInformation): void {
     localStorage.setItem('session', JSON.stringify(session));
   }

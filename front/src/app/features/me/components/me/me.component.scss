@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+@use 'src/styles/theme' as theme;
+
+.me-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .me-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        gap: 1rem;
+
+        input {
+            width: 100%;
+            border: 1px solid mat.get-color-from-palette(theme.$primary);
+        }
+    }
+    .mat-divider {
+        width: 100%;
+    }
+    .no-subscriptions {
+        a {
+            text-decoration: underline;
+        }
+    }
+}
+

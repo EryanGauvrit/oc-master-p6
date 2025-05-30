@@ -29,6 +29,14 @@ public class TopicService {
         }).toList();
     }
 
+    public List<GetTopicsResponse> getTopicsByUser(String email) {
+        List<Topic> userSubscriptions = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"))
+                .getSubscriptions();
+
+        return userSubscriptions.stream().map(topic -> new GetTopicsResponse(topic.getId(), topic.getTitle(), topic.getContent(), true)).toList();
+    }
+
     public Topic getTopicById(Long id) {
         return topicRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Topic not found with id: " + id));
