@@ -20,6 +20,21 @@ As you may have seen if you already started the app, a simple home page containi
 
 This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get rid of it.
 
-Good luck!
+## Back
+
+This project run with Spring Boot version 3.3.5
+
+### Development server
+
+- Run Spring Boot application
+- The default port used is `http://localhost:3001/`
+
+### Database
+
+- Create and import database with .sql file located in `./db/mdd-project.sql`.
+- The default database url is: `jdbc:mysql://localhost:3306/mdd_project?serverTimezone=UTC`
+
+---
+
+### ⚠️ Don't forget to show `./back/src/main/ressources/application.properties` to adapt your configuration.
