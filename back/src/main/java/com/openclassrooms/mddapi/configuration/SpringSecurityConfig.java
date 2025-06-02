@@ -31,9 +31,11 @@ import java.util.List;
 public class SpringSecurityConfig {
 
     private final String jwtKey;
+    private final String frontendUrl;
 
-    public SpringSecurityConfig(@Value("${jwt.secret.key}") String jwtKey) {
+    public SpringSecurityConfig(@Value("${jwt.secret.key}") String jwtKey, @Value("${frontend.url}") String frontendUrl) {
         this.jwtKey = jwtKey;
+        this.frontendUrl = frontendUrl;
     }
 
     @Bean
@@ -84,7 +86,7 @@ public class SpringSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedOrigins(List.of(frontendUrl));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);

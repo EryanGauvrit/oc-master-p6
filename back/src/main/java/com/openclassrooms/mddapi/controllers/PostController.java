@@ -25,8 +25,15 @@ public class PostController {
     private final TopicService topicService;
 
     @GetMapping
-    public List<Post> getPosts(@RequestParam Optional<String> order) {
-        return postService.getAllPosts(order);
+    public List<Post> getPosts(@RequestParam Optional<String> order, @RequestHeader("Authorization") String token) {
+        token = token.substring(7);
+        String email = springSecurityConfig.jwtDecoder().decode(token).getSubject();
+        User user = userService.getByEmail(email);
+        if (user.getSubscriptions().isEmpty()) {
+            return postService.getAllPosts(order, List.of());
+        }
+        List<Topic> topics = user.getSubscriptions();
+        return postService.getAllPosts(order, topics);
     }
 
     @GetMapping("/{id}")

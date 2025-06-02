@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties({"posts", "subscribers"})
+@JsonIgnoreProperties({"subscribers"})
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,7 @@ public class Topic {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+    @JsonIgnoreProperties({"comments"})
     @OneToMany(mappedBy = "topic")
     private List<Post> posts;
 

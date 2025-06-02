@@ -1,8 +1,10 @@
 package com.openclassrooms.mddapi.services;
 
 import com.openclassrooms.mddapi.models.Post;
+import com.openclassrooms.mddapi.models.Topic;
 import com.openclassrooms.mddapi.repositories.PostRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -15,12 +17,9 @@ import java.util.Optional;
 public class PostService {
     private PostRepository postRepository;
 
-    public List<Post> getAllPosts(Optional<String> order) {
-        if (order.isPresent() && order.get().equalsIgnoreCase("asc")) { // check if order is "asc"
-            return postRepository.findAllByOrderByCreatedAtAsc();
-        } else {
-            return postRepository.findAllByOrderByCreatedAtDesc();
-        }
+    public List<Post> getAllPosts(Optional<String> order, List<Topic> topics) {
+        Sort sort = order.isPresent() && order.get().equals("asc") ? Sort.by("createdAt").ascending() : Sort.by("createdAt").descending();
+            return postRepository.findByTopicIn(topics, sort);
     }
 
     public Post getPostById(Long id) {

@@ -32,6 +32,7 @@ This project run with Spring Boot version 3.3.5
 
 ### Database
 
+- You need to have a MySQL database running on your machine.
 - Create and import database with .sql file located in `./db/mdd-project.sql`.
 - The default database url is: `jdbc:mysql://localhost:3306/mdd_project?serverTimezone=UTC`
 
